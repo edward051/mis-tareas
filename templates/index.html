@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Mis Tareas</title>
+</head>
+<body>
+    <h1>Mis Tareas</h1>
+
+    <form action="/crear" method="POST">
+        <input type="text" name="titulo" placeholder="Nueva tarea" required>
+        <input type="date" name="fecha_limite">
+        <button type="submit">Agregar</button>
+    </form>
+
+    <ul>
+        {% for tarea in tareas %}
+        <li>
+            {% if tarea.completada %}
+                <s>{{ tarea.titulo }}</s>
+            {% else %}
+                {{ tarea.titulo }}
+            {% endif %}
+
+            {% if tarea.fecha_limite %}
+                (Fecha límite: {{ tarea.fecha_limite }})
+            {% endif %}
+
+            {% if tarea.completada %}
+                <a href="/descompletar/{{ tarea.id }}">Descompletar</a>
+            {% else %}
+                <a href="/completar/{{ tarea.id }}">Completar</a>
+            {% endif %}
+
+            <a href="/eliminar/{{ tarea.id }}">Eliminar</a>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
