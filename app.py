@@ -1,3 +1,4 @@
+import os
 from flask import Flask, render_template, request, redirect, url_for
 
 app = Flask(__name__)
@@ -26,13 +27,18 @@ def crear():
     return redirect(url_for("inicio"))
 
 
-@app.route("/modificar/<int:tarea_id>", methods=["POST"])
+@app.route("/modificar/<int:tarea_id>", methods=["GET", "POST"])
 def modificar(tarea_id):
-    for tarea in tareas:
-        if tarea["id"] == tarea_id:
-            tarea["titulo"] = request.form["titulo"]
-            tarea["fecha_limite"] = request.form.get("fecha_limite", "")
-    return redirect(url_for("inicio"))
+    tarea = next((t for t in tareas if t["id"] == tarea_id), None)
+    if tarea is None:
+        return redirect(url_for("inicio"))
+
+    if request.method == "POST":
+        tarea["titulo"] = request.form["titulo"]
+        tarea["fecha_limite"] = request.form.get("fecha_limite", "")
+        return redirect(url_for("inicio"))
+
+    return render_template("modificar.html", tarea=tarea)
 
 
 @app.route("/completar/<int:tarea_id>")
@@ -59,4 +65,4 @@ def eliminar(tarea_id):
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))

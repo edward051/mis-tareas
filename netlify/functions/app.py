@@ -1,1 +1,0 @@
-import sys import os sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "..")) import serverless_wsgi from app import app def handler(event, context): return serverless_wsgi.handle(app, event, context)
