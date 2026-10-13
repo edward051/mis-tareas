@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mis Tareas</title>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+  <main class="app">
+    <h1>Mis Tareas</h1>
+    <p id="resumen" class="resumen" aria-live="polite"></p>
+
+    <form id="formulario" class="formulario">
+      <label class="campo campo-texto">
+        <span>Tarea</span>
+        <input id="texto" type="text" required maxlength="120" placeholder="Ej: Entregar informe de física">
+      </label>
+      <label class="campo">
+        <span>Fecha límite</span>
+        <input id="fecha" type="date">
+      </label>
+      <div class="acciones">
+        <button type="submit" id="guardar">Agregar tarea</button>
+        <button type="button" id="cancelar" class="secundario" hidden>Cancelar</button>
+      </div>
+    </form>
+
+    <ul id="lista" class="lista"></ul>
+    <p id="vacio" class="vacio" hidden>No tienes tareas. Escribe la primera arriba.</p>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
