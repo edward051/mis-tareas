@@ -1,0 +1,91 @@
+:root {
+  --fondo: #eef2f6;
+  --papel: #ffffff;
+  --tinta: #1b2430;
+  --suave: #5b6675;
+  --linea: #d5dce5;
+  --acento: #0f766e;
+  --alerta: #b42318;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--fondo);
+  color: var(--tinta);
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+  line-height: 1.5;
+}
+
+.app {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 2.5rem 1.25rem 4rem;
+}
+
+h1 { margin: 0; font-size: 2rem; letter-spacing: -0.01em; }
+
+.resumen { margin: 0.25rem 0 1.75rem; color: var(--suave); }
+
+.formulario {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.75rem 1rem;
+  align-items: end;
+  padding-bottom: 1.5rem;
+  border-bottom: 2px solid var(--tinta);
+}
+.campo { display: flex; flex-direction: column; gap: 0.25rem; font-size: 0.9rem; color: var(--suave); }
+.campo-texto { grid-column: 1 / -1; }
+
+input[type="text"], input[type="date"] {
+  font: inherit;
+  color: var(--tinta);
+  padding: 0.6rem 0.75rem;
+  border: 1px solid var(--linea);
+  border-radius: 6px;
+  background: var(--papel);
+}
+
+.acciones { display: flex; gap: 0.5rem; }
+
+button {
+  font: inherit;
+  cursor: pointer;
+  padding: 0.6rem 1rem;
+  border: 1px solid var(--acento);
+  border-radius: 6px;
+  background: var(--acento);
+  color: #fff;
+}
+button.secundario { background: transparent; color: var(--acento); }
+button.texto { padding: 0.25rem 0.5rem; background: transparent; border-color: transparent; color: var(--suave); font-size: 0.9rem; }
+button.texto:hover { color: var(--tinta); text-decoration: underline; }
+button.texto.peligro:hover { color: var(--alerta); }
+
+:focus-visible { outline: 3px solid #f59e0b; outline-offset: 2px; }
+
+.lista { list-style: none; margin: 0; padding: 0; }
+
+.tarea {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 0.25rem 0.75rem;
+  align-items: center;
+  padding: 0.9rem 0;
+  border-bottom: 1px solid var(--linea);
+}
+.tarea input[type="checkbox"] { width: 1.25rem; height: 1.25rem; accent-color: var(--acento); }
+.tarea .texto { font-size: 1.05rem; }
+.tarea .fecha { grid-column: 2; font-size: 0.85rem; color: var(--suave); }
+.tarea .botones { grid-column: 3; grid-row: 1 / span 2; display: flex; }
+
+.tarea.hecha .texto { text-decoration: line-through; color: var(--suave); }
+.tarea.vencida .fecha { color: var(--alerta); font-weight: 600; }
+
+.vacio { margin-top: 2rem; color: var(--suave); text-align: center; }
+
+@media (max-width: 480px) {
+  .formulario { grid-template-columns: 1fr; }
+}
