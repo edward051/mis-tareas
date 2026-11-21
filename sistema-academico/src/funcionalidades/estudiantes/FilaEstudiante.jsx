@@ -1,13 +1,10 @@
-import { estaAprobado } from './reglas';
-
+// El estado "aprobado" ya viene resuelto por la API: aqui solo se muestra.
 function FilaEstudiante({ estudiante }) {
-  const estado = estaAprobado(estudiante.nota) ? 'Aprobado' : 'Reprobado';
-
   return (
     <tr>
       <td>{estudiante.nombre}</td>
       <td>{estudiante.nota}</td>
-      <td>{estado}</td>
+      <td>{estudiante.aprobado ? 'Aprobado' : 'Reprobado'}</td>
     </tr>
   );
 }
