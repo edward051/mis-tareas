@@ -1,0 +1,44 @@
+.resumen {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.indicador {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 7rem;
+  padding: 0.6rem 1rem;
+  border: 1px solid #555;
+  border-radius: 8px;
+}
+
+.indicador-titulo {
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
+
+.indicador-valor {
+  font-size: 1.6rem;
+}
+
+.formulario {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.formulario input {
+  flex: 1;
+  padding: 0.5rem;
+}
+
+.error {
+  color: #e5484d;
+}
+
+table {
+  width: 100%;
+}
